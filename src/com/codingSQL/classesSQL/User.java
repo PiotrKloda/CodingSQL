@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 import org.mindrot.jbcrypt.BCrypt;
 
+import com.sun.org.apache.regexp.internal.recompile;
+
 public class User {
 
 	//ATRYBUTY
@@ -15,23 +17,24 @@ public class User {
 	private String username;
 	private String password;
 	private String email;
+	private int person_group_id;
 
 	//KONSTRUKTOR Z PARAMETRAMI
-	public User(String username, String email, String password) {
+	public User(String username, String email, String password, int person_group_id) {
 		this.id=0;
 		this.username=username;
 		this.email=email;
 		this.setPassword(password);
+		this.setPerson_group_id(person_group_id);
 	}
+		
 	//KONSTRUKTOR DOMYSLNY
 	public User() {
-		this.id=0;
-		this.username=null;
 	}
 	
 	//ZMIANA OPISU FUNKCJI
 	public String toString(){
-		return (id + " " + username + " " + password + " " + email);
+		return (id + " | " + username + " " + password + " " + email + " " + person_group_id);
 	}
 
 	//GETTERY I SETTERY
@@ -63,29 +66,38 @@ public class User {
 		this.email = email;
 	}
 	
+	public int getPerson_group_id() {
+		return person_group_id;
+	}
+	public void setPerson_group_id(int person_group_id) {
+		this.person_group_id = person_group_id;
+	}
+	
 	//savetoDB 
 	public void saveToDB(Connection conn) throws SQLException {
 		if (this.id == 0) {
-			String sql = "INSERT INTO users(username, email, password) VALUES (?, ?, ?)";
+			String sql = "INSERT INTO users(username, email, password, person_group_id) VALUES (?, ?, ?, ?)";
 			String generatedColumns[] = { "ID" };
 			PreparedStatement preparedStatement;
 			preparedStatement = conn.prepareStatement(sql, generatedColumns);
 			preparedStatement.setString(1, this.username);
 			preparedStatement.setString(2, this.email);
 			preparedStatement.setString(3, this.password);
+			preparedStatement.setInt(4, this.person_group_id);
 			preparedStatement.executeUpdate();
 			ResultSet rs = preparedStatement.getGeneratedKeys();
 			if (rs.next()) {
 				this.id = rs.getInt(1);
 			}
 		} else {
-			String sql = "UPDATE users SET username=?, email=?, password=? where id = ?";
+			String sql = "UPDATE users SET username=?, email=?, password=?, person_group_id=? where id = ?";
 			PreparedStatement preparedStatement;
 			preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setString(1, this.username);
 			preparedStatement.setString(2, this.email);
 			preparedStatement.setString(3, this.password);
-			preparedStatement.setInt(4, this.id);
+			preparedStatement.setInt(4, this.person_group_id);
+			preparedStatement.setInt(5, this.id);
 			preparedStatement.executeUpdate();
 			}
 		}
@@ -103,6 +115,7 @@ public class User {
 			loadedUser.username = resultSet.getString("username");
 			loadedUser.password = resultSet.getString("password");
 			loadedUser.email = resultSet.getString("email");
+			loadedUser.person_group_id = resultSet.getInt("person_group_id");
 		return loadedUser;}
 		return null;}
 	
@@ -118,6 +131,7 @@ public class User {
 			loadedUser.username = resultSet.getString("username");
 			loadedUser.password = resultSet.getString("password");
 			loadedUser.email = resultSet.getString("email");
+			loadedUser.person_group_id = resultSet.getInt("person_group_id");
 			users.add(loadedUser);}
 		User[] uArray = new User[users.size()]; uArray = users.toArray(uArray);
 		return uArray;}
@@ -132,5 +146,26 @@ public class User {
 		preparedStatement.executeUpdate();
 		this.id=0;
 		}
+	}
+	
+	//All solutions of a user
+	static public User[] loadAllByGroupId (Connection conn, int id) throws SQLException {
+		ArrayList<User> usersList = new ArrayList<>();
+		String sql = " SELECT * FROM user_group JOIN users ON user_group.id=users.person_group_id WHERE user_group.id=?;";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, id);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next()) {
+			User loadedUser = new User();
+			loadedUser.id=rs.getInt("users.id");
+			loadedUser.setUsername(rs.getString("username"));
+			loadedUser.setEmail(rs.getString("email"));
+			loadedUser.setPassword(rs.getString("password"));
+			loadedUser.setPerson_group_id(rs.getInt("person_group_id"));
+			usersList.add(loadedUser);
+		}
+		User[] uArray = new User[usersList.size()];
+		uArray = usersList.toArray(uArray);
+		return uArray;
 	}
 }

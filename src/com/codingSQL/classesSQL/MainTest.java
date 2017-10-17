@@ -12,7 +12,7 @@ public class MainTest {
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/codingSQL?useSSL=false","root","coderslab");
 			
 			//----------------------------------------saveToDB
-//			User u1=new User("Krzysiek", "Krzysiek@gmail.com", "ajsdfhn");
+//			User u1=new User("Krzysiek", "Krzysiek@gmail.com", "ajsdfhn",2);
 //			u1.saveToDB(conn);
 			
 			//----------------------------------------loadUserById
@@ -56,12 +56,27 @@ public class MainTest {
 //			s1 = Solution.loadSolutionById(conn, 2);
 //			System.out.println(s1);
 
-			Solution[] sl=Solution.loadAllSolutions(conn);
-			for (Solution eachSol : sl) {
-				System.out.println(eachSol);
-			}
+//			Solution[] sl=Solution.loadAllSolutions(conn);
+//			for (Solution eachSol : sl) {
+//				System.out.println(eachSol);
+//			}
 			
 			//sl[2].delete(conn);
+			
+			
+//			Solution s2= new Solution("2011-05-01", "2017-08-04", "Solution to Java exercise", 11 , 8);
+//			s2.saveToDB(conn);
+			
+//			Solution[] sList = Solution.loadAllByExerciseId(conn, 3);
+//			for ( Solution eachSol : sList) {
+//				System.out.println(eachSol);
+//			}
+			
+			User[] uList = User.loadAllByGroupId(conn, 1);
+			for (User eachUser : uList) {
+				System.out.println(eachUser);
+			}
+		
 			
 			
 		}catch(Exception e) {

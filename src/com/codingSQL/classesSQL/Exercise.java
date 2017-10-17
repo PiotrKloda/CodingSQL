@@ -114,4 +114,6 @@ public class Exercise {
 			this.id=0;
 			}
 		}
+		
+		
 }
