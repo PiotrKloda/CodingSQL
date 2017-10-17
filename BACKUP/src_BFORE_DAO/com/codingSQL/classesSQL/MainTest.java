@@ -9,14 +9,7 @@ public class MainTest {
 		
 		try{
 			
-			//Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/codingSQL?useSSL=false","root","coderslab");
-			Connection conn = DbUtil.getConn();
-			
-			User[] uList = User.loadAllByGroupId(conn, 1);
-			for (User eachUser : uList) {
-				System.out.println(eachUser);
-			}
-			
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/codingSQL?useSSL=false","root","coderslab");
 			
 			//----------------------------------------saveToDB
 //			User u1=new User("Krzysiek", "Krzysiek@gmail.com", "ajsdfhn",2);
@@ -79,7 +72,10 @@ public class MainTest {
 //				System.out.println(eachSol);
 //			}
 			
-			
+			User[] uList = User.loadAllByGroupId(conn, 1);
+			for (User eachUser : uList) {
+				System.out.println(eachUser);
+			}
 		
 			
 			
