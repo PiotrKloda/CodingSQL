@@ -1,4 +1,4 @@
-package com.codingSQL.classesSQL;
+package com.codingSQL.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -138,6 +138,25 @@ public class Solution {
 				solution.add(loadedSolution);}
 			Solution[] uArray = new Solution[solution.size()]; uArray = solution.toArray(uArray);
 			return uArray;}
+		
+		//loadAllSolutionsLIMIT
+			static public Solution[] loadAllSolutions(Connection conn, int limit) throws SQLException {
+				ArrayList<Solution> solution = new ArrayList<Solution>();
+				String sql = "SELECT * FROM solution ORDER BY updated DESC LIMIT ?"; PreparedStatement preparedStatement;
+				preparedStatement = conn.prepareStatement(sql);
+				preparedStatement.setInt(1, limit);
+				ResultSet resultSet = preparedStatement.executeQuery();
+				while (resultSet.next()) {
+					Solution loadedSolution = new Solution();
+					loadedSolution.id = resultSet.getInt("id");
+					loadedSolution.created = resultSet.getString("created");
+					loadedSolution.updated = resultSet.getString("updated");
+					loadedSolution.description = resultSet.getString("description");
+					loadedSolution.exercise_id = resultSet.getInt("exercise_id");
+					loadedSolution.users_id = resultSet.getInt("users_id");
+					solution.add(loadedSolution);}
+				Solution[] uArray = new Solution[solution.size()]; uArray = solution.toArray(uArray);
+				return uArray;}
 		
 		//delete Solution
 		public void delete(Connection conn) throws SQLException {

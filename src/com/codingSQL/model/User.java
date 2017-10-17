@@ -1,4 +1,4 @@
-package com.codingSQL.classesSQL;
+package com.codingSQL.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import org.mindrot.jbcrypt.BCrypt;
 
-import com.sun.org.apache.regexp.internal.recompile;
 
 public class User {
 

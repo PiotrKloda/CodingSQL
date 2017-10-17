@@ -1,4 +1,4 @@
-package com.codingSQL.classesSQL;
+package com.codingSQL.model;
 
 import java.sql.Connection;
 import java.sql.SQLException;

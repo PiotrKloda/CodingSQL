@@ -1,4 +1,4 @@
-package com.codingSQL.classesSQL;
+package com.codingSQL.model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,13 +9,10 @@ public class MainTest {
 		
 		try{
 			
-			//Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/codingSQL?useSSL=false","root","coderslab");
-			Connection conn = DbUtil.getConn();
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/codingSQL?useSSL=false","root","coderslab");
+			//Connection conn = DbUtil.getConn();
 			
-			User[] uList = User.loadAllByGroupId(conn, 1);
-			for (User eachUser : uList) {
-				System.out.println(eachUser);
-			}
+			
 			
 			
 			//----------------------------------------saveToDB
@@ -27,10 +24,10 @@ public class MainTest {
 //			System.out.println(u2);
 			
 			//----------------------------------------loadAllUsers
-//			User[] u = User.loadAllUsers(conn);
-//			for (User eachUser : u) {
-//				System.out.println(eachUser);
-//			}
+			User[] u = User.loadAllUsers(conn);
+			for (User eachUser : u) {
+				System.out.println(eachUser);
+			}
 			
 			//----------------------------------------modifyUsers
 //			u[0].setUsername("Michal");
@@ -79,7 +76,15 @@ public class MainTest {
 //				System.out.println(eachSol);
 //			}
 			
+//			User[] uList = User.loadAllByGroupId(conn, 1);
+//			for (User eachUser : uList) {
+//				System.out.println(eachUser);
+//			}
 			
+			Solution[] solList = Solution.loadAllSolutions(conn, 2);
+			for (Solution each:solList) {
+				System.out.println(each);
+			}
 		
 			
 			
