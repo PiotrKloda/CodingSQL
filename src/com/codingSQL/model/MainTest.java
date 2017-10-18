@@ -1,16 +1,27 @@
 package com.codingSQL.model;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-
 public class MainTest {
 
 	public static void main(String[] args) {
 		
 		try{
 			
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/codingSQL?useSSL=false","root","coderslab");
-			//Connection conn = DbUtil.getConn();
+			//Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/codingSQL?useSSL=false","root","coderslab");
+			//Connection conn = DbUtil.getConnection();
+			
+//			Exercise ex3 = new Exercise("DAO", "Split classes to DAO");
+//			ExerciseDAO.saveToDB(ex3);
+//			
+//			Exercise[] exercises = ExerciseDAO.loadAllExercises();
+//			for (Exercise each:exercises){
+//				System.out.println(each);
+//			}
+			
+			User[] uList=UserDAO.loadAllByGroupId(2);
+			
+			for(int i=0;i<uList.length;i++) {
+				System.out.println(i + " " + uList[i]);
+			}
 			
 			
 			
@@ -24,10 +35,10 @@ public class MainTest {
 //			System.out.println(u2);
 			
 			//----------------------------------------loadAllUsers
-			User[] u = User.loadAllUsers(conn);
-			for (User eachUser : u) {
-				System.out.println(eachUser);
-			}
+//			User[] u = User.loadAllUsers(conn);
+//			for (User eachUser : u) {
+//				System.out.println(eachUser);
+//			}
 			
 			//----------------------------------------modifyUsers
 //			u[0].setUsername("Michal");
@@ -81,10 +92,10 @@ public class MainTest {
 //				System.out.println(eachUser);
 //			}
 			
-			Solution[] solList = Solution.loadAllSolutions(conn, 2);
-			for (Solution each:solList) {
-				System.out.println(each);
-			}
+//			Solution[] solList = Solution.loadAllSolutions(conn,2);
+//			for (Solution each:solList) {
+//				System.out.println(each);
+//			}
 		
 			
 			

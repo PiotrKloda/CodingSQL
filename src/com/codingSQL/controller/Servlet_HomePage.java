@@ -1,11 +1,8 @@
 package com.codingSQL.controller;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import java.sql.JDBCType;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,8 +10,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.codingSQL.model.Exercise;
+import com.codingSQL.model.ExerciseDAO;
+import com.codingSQL.model.Solution;
+import com.codingSQL.model.SolutionDAO;
+import com.codingSQL.model.User;
+import com.codingSQL.model.UserDAO;
 
-@WebServlet("/")
+
+@WebServlet("/hp")
 public class Servlet_HomePage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -24,11 +28,28 @@ public class Servlet_HomePage extends HttpServlet {
 			
 			int limit = Integer.parseInt(getServletContext().getInitParameter(("numberSolutions")));
 			response.getWriter().append(limit + "sdf");
-			
-			response.getWriter().append( "sdf");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/codingSQL?useSSL=false","root","coderslab");
 		
-			//Solution[] sList = Solution.loadAllSolutions(conn, limit)
+			Solution[] sList = SolutionDAO.loadAllSolutions(limit);
+			Exercise[] eList = ExerciseDAO.loadExercisesOfLatestSolution(sList);
+			User[] uList = UserDAO.loadUsersOfLatestSolution(sList);
+			int sListLength = sList.length;
+			
+//			for(int i=0 ; i<sListLength ; i++) {
+//				System.out.println(sList[i]);
+//				System.out.println(eList[i]);
+//				System.out.println(uList[i]);
+//				System.out.println();
+//			}
+			
+			
+			request.setAttribute("sList", sList);
+			request.setAttribute("eList", eList);
+			request.setAttribute("uList", uList);
+			request.setAttribute("sListLength", sListLength);
+			System.out.println("Servler HomePage zaladowany");
+			getServletContext().getRequestDispatcher("/view/HomePage_view.jsp").forward(request, response);
+			
+			
 		
 		} catch (SQLException e) {
 			e.printStackTrace();

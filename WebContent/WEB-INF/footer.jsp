@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>This is a very nice footer</h2>
+<hr>
+	<p>--footer</p>
 </body>
 </html>

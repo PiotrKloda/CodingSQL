@@ -9,10 +9,10 @@
 </head>
 <body>
 
-<a href="http://www.wp.pl">www.wp.pl   </a>
-<p></p>
+<a href="http://www.wp.pl">www.wp.pl  , </a>
+
 
 <a href="http://github.com">Github</a> 
-
+<hr>
 </body>
 </html>
