@@ -83,7 +83,7 @@ public class User_groupDAO {
 		return u_gArray;
 	}
 
-	// delete user_group
+	// delete user_group 
 	static public void delete(User_group ug) throws SQLException {
 		if (ug.getId() != 0) {
 			try {
@@ -100,4 +100,21 @@ public class User_groupDAO {
 			}
 		}
 	}
+	
+	// delete user_group by Id
+		static public void delete(int ug_id) throws SQLException {
+			if (ug_id != 0) {
+				try {
+					Connection conn = DbUtil.getConnection();
+					String sql = "DELETE FROM user_group WHERE id= ?";
+					PreparedStatement preparedStatement;
+					preparedStatement = conn.prepareStatement(sql);
+					preparedStatement.setInt(1, ug_id);
+					preparedStatement.executeUpdate();
+				} catch (SQLException e) {
+					System.out.println("Deleting user_group failed");
+					e.printStackTrace();
+				}
+			}
+		}
 }

@@ -8,6 +8,6 @@
 </head>
 <body>
 <hr>
-	<p>--footer</p>
+	<p>Database Management Client for codingSQL</p>
 </body>
 </html>
