@@ -109,14 +109,8 @@ public class SolutionDAO {
 		try {
 			Connection conn = DbUtil.getConnection();
 			String sql = "SELECT * FROM solution ORDER BY updated DESC LIMIT ?";
-			// String sql = "SELECT * FROM solution JOIN exercise ON
-			// solution.exercise_id=exercise.id JOIN users ON
-			// solution.users_id=users.id ORDER BY updated DESC LIMIT ?";
-			// String sql = "SELECT users.username AS username, exercise.title
-			// AS title, solution.created AS created, solution.id as id FROM
-			// solution JOIN exercise ON solution.exercise_id=exercise.id JOIN
-			// users ON solution.users_id=users.id ORDER BY updated DESC LIMIT 2
-			// ";
+			// String sql = "SELECT * FROM solution JOIN exercise ON solution.exercise_id=exercise.id JOIN users ON solution.users_id=users.id ORDER BY updated DESC LIMIT ?";
+			// String sql = "SELECT users.username AS username, exercise.title AS title, solution.created AS created, solution.id as id FROM solution JOIN exercise ON solution.exercise_id=exercise.id JOIN users ON solution.users_id=users.id ORDER BY updated DESC LIMIT 2 ";
 			PreparedStatement preparedStatement;
 			preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setInt(1, limit);

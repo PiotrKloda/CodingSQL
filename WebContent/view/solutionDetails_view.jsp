@@ -8,6 +8,7 @@
 </head>
 <body>
 	<%@ include file="../WEB-INF/header.jsp" %>
+	<a href="http://localhost:8080/codingSQL/hp">Go back </a> <br>
 	
 	<h1>Solution details</h1>
 	<p>Exercise: ${exercise.title}</p>

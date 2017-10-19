@@ -17,7 +17,7 @@ public class MainTest {
 //				System.out.println(each);
 //			}
 			
-			User[] uList=UserDAO.loadAllByGroupId(2);
+			User[] uList=UserDAO.loadAllByGroupId(1);
 			
 			for(int i=0;i<uList.length;i++) {
 				System.out.println(i + " " + uList[i]);
