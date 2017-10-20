@@ -20,7 +20,6 @@ public class Servlet_admin_ug_Manage extends HttpServlet {
 		
 		try {
 			User_group[] ugList = User_groupDAO.loadAllUser_groups();
-			
 			request.setAttribute("ugList", ugList);
 			getServletContext().getRequestDispatcher("/view/admin_ug_Manage_view.jsp").forward(request, response);
 			
@@ -43,19 +42,18 @@ public class Servlet_admin_ug_Manage extends HttpServlet {
 			}
 		}
 		
-		if ( (Integer.parseInt(request.getParameter("num"))) > 0  ){
-			try {
-				int ugId=Integer.parseInt( request.getParameter("num"));
-				User_groupDAO.delete(ugId);
+		if (request.getParameter("num")!=null  ) {
+			if ( (Integer.parseInt(request.getParameter("num"))) > 0  ){
+				try {
+					int ugId=Integer.parseInt( request.getParameter("num"));
+					User_groupDAO.delete(ugId);
+					response.sendRedirect("http://localhost:8080/codingSQL/admin_ug");
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			} else {
 				response.sendRedirect("http://localhost:8080/codingSQL/admin_ug");
-			} catch (SQLException e) {
-				e.printStackTrace();
 			}
-		} else {
-			response.sendRedirect("http://localhost:8080/codingSQL/admin_ug");
 		}
-		
-		
 	}
-
 }

@@ -26,7 +26,7 @@
 			<c:forEach var="ug" items="${ugList}">
 				<tr>
 					<td>${ug.name}</td>
-					<td><a href="">edit</a></td>
+					<td><a href="http://localhost:8080/codingSQL/view/form_ug_edit.jsp?ug_name=${ug.name}&ugId=${ug.id}">edit</a></td>
 					<td><a href="http://localhost:8080/codingSQL/view/form_ug_delete.jsp?ug_name=${ug.name}&ugId=${ug.id}">delete</a></td>
 					
 					
