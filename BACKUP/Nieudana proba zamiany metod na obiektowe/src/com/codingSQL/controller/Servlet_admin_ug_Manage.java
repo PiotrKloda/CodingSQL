@@ -30,7 +30,7 @@ public class Servlet_admin_ug_Manage extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
+		//add
 		if ( request.getParameter("name")!=null ) {
 			try {
 				String name=request.getParameter("name");
@@ -42,6 +42,7 @@ public class Servlet_admin_ug_Manage extends HttpServlet {
 			}
 		}
 		
+		//delete
 		if (request.getParameter("num")!=null  ) {
 			if ( (Integer.parseInt(request.getParameter("num"))) > 0  ){
 				try {
@@ -55,19 +56,5 @@ public class Servlet_admin_ug_Manage extends HttpServlet {
 				response.sendRedirect("http://localhost:8080/codingSQL/admin_ug");
 			}
 		}
-		
-		if ( request.getParameter("new_name")!=null && request.getParameter("new_id")!=null) {
-			try {
-				int ugId=Integer.parseInt( request.getParameter("new_id"));
-				User_group ug = User_groupDAO.loadUser_groupById(ugId);
-				ug.setName(request.getParameter("new_name"));
-				
-				User_groupDAO.saveToDB(ug);
-				response.sendRedirect("http://localhost:8080/codingSQL/admin_ug");
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
 	}
 }

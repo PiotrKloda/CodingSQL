@@ -11,7 +11,7 @@
 
 <a href="http://localhost:8080/codingSQL/hp">HomePage </a> <br>
 <a href="http://localhost:8080/codingSQL/groupsList">All Groups</a> <br>
-<a href="http://localhost:8080/codingSQL/view/admin_login_form.jsp">Admin panel</a>
+<a href="http://localhost:8080/codingSQL/panel">Admin panel</a>
 
 
 <hr>

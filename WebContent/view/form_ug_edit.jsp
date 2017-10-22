@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,11 +8,12 @@
 </head>
 <body>
 
-<a href="http://localhost:8080/codingSQL/hp">HomePage </a> <br>
-<a href="http://localhost:8080/codingSQL/groupsList">All Groups</a> <br>
-<a href="http://localhost:8080/codingSQL/view/admin_login_form.jsp">Admin panel</a>
+	<form action="http://localhost:8080/codingSQL/admin_ug" method="post">
+		<label> Old Group name: ${ug_id.name}. <br> Input new Group name: 
+			<input type="text" name="new_name" id="new_name" />  </label>
+		<input type="hidden" name="new_id" value=${ug_id.id } />
+		<input type="submit" value="Submit new Group" />
+	</form>
 
-
-<hr>
 </body>
 </html>

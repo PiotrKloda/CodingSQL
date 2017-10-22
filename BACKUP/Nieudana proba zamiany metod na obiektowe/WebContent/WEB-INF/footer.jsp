@@ -9,12 +9,5 @@
 <body>
 <hr>
 	<p>Database Management Client for codingSQL</p>
-	 <br>
-	 <b>To upgrade:</b>
-	 <ul>
-	 	<li> Active Record - SQL -> JAVA, Tables with foreign key in spite of (int) Foreign_id -> whole object (object) Foreign object </li>
-	 	<li> Sending parameters - Always servlet-jsp-servlet-jsp , NOT servlet-jsp-jsp </li>
-	 	<li> jsp-Servlet -> send only Object_ID, and in Servlet call the object again. NOT send all parameters through GET </li>
-	 </ul>
 </body>
 </html>
