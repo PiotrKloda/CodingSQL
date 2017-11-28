@@ -1,7 +1,7 @@
 # CodingSQL_Servlets
 
 ## Descrption
-Application for partial management of programming school. Users are able to store their Solutions to Exercises
+Application for partial management of programming school. Users are able to store their exercises solutions.
 
 Preview:
 
