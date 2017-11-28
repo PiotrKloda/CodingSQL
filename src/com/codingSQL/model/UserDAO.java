@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 public class UserDAO {
 
-	// savetoDB
 	static public void saveToDB(User u) throws SQLException {
 		try {
 			Connection conn = DbUtil.getConnection();
@@ -44,7 +43,6 @@ public class UserDAO {
 		}
 	}
 
-	// loadUserById
 	static public User loadUserById(int id) throws SQLException {
 		try {
 			Connection conn = DbUtil.getConnection();
@@ -69,7 +67,6 @@ public class UserDAO {
 		return null;
 	}
 
-	// loadAllUsers
 	static public User[] loadAllUsers() throws SQLException {
 		ArrayList<User> users = new ArrayList<User>();
 		try {
@@ -96,7 +93,6 @@ public class UserDAO {
 		return uArray;
 	}
 
-	// delete user
 	static public void delete(User u) throws SQLException {
 		try {
 			Connection conn = DbUtil.getConnection();
@@ -114,7 +110,6 @@ public class UserDAO {
 		}
 	}
 
-	// All solutions of a user
 	static public User[] loadAllByGroupId(int id) throws SQLException {
 		ArrayList<User> usersList = new ArrayList<>();
 		try {
@@ -141,7 +136,6 @@ public class UserDAO {
 		return uArray;
 	}
 
-	// to see username of User of a solution - homePage
 	static public User[] loadUsersOfLatestSolution(Solution[] sList) {
 		User[] uList = new User[sList.length];
 		try {
@@ -153,33 +147,5 @@ public class UserDAO {
 		}
 		return uList;
 	}
-//	
-//	// loadUsers by group id
-//		static public User[] loadUsersbyGroupId(int group_id) throws SQLException {
-//			ArrayList<User> users = new ArrayList<User>();
-//			try {
-//				Connection conn = DbUtil.getConnection();
-//				String sql = "SELECT * FROM users WHERE person_group_id = ?;";
-//				PreparedStatement ps = conn.prepareStatement(sql);
-//				ps.setInt(1, group_id);
-//				ResultSet resultSet = ps.executeQuery();
-//				while (resultSet.next()) {
-//					User loadedUser = new User();
-//					loadedUser.setId(resultSet.getInt("id"));
-//					loadedUser.setUsername(resultSet.getString("username"));
-//					loadedUser.setPassword(resultSet.getString("password"));
-//					loadedUser.setEmail(resultSet.getString("email"));
-//					loadedUser.setPerson_group_id(resultSet.getInt("person_group_id"));
-//					users.add(loadedUser);
-//				}
-//			} catch (SQLException e) {
-//				System.out.println("Loading All Users failed");
-//				e.printStackTrace();
-//			}
-//			User[] uArray = new User[users.size()];
-//			uArray = users.toArray(uArray);
-//			return uArray;
-//		}
-	
 
 }

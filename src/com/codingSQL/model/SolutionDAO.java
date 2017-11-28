@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 public class SolutionDAO {
 
-	// savetoDB
 	static public void saveToDB(Solution s) throws SQLException {
 
 		try {
@@ -46,7 +45,6 @@ public class SolutionDAO {
 		}
 	}
 
-	// loadSolutionById
 	static public Solution loadSolutionById(int id) throws SQLException {
 
 		try {
@@ -73,7 +71,6 @@ public class SolutionDAO {
 		return null;
 	}
 
-	// loadAllSolutions
 	static public Solution[] loadAllSolutions() throws SQLException {
 
 		ArrayList<Solution> solution = new ArrayList<Solution>();
@@ -102,15 +99,12 @@ public class SolutionDAO {
 		return uArray;
 	}
 
-	// loadAllSolutionsLIMIT
 	static public Solution[] loadAllSolutions(int limit) throws SQLException {
 		ArrayList<Solution> solution = new ArrayList<Solution>();
 
 		try {
 			Connection conn = DbUtil.getConnection();
 			String sql = "SELECT * FROM solution ORDER BY updated DESC LIMIT ?";
-			// String sql = "SELECT * FROM solution JOIN exercise ON solution.exercise_id=exercise.id JOIN users ON solution.users_id=users.id ORDER BY updated DESC LIMIT ?";
-			// String sql = "SELECT users.username AS username, exercise.title AS title, solution.created AS created, solution.id as id FROM solution JOIN exercise ON solution.exercise_id=exercise.id JOIN users ON solution.users_id=users.id ORDER BY updated DESC LIMIT 2 ";
 			PreparedStatement preparedStatement;
 			preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setInt(1, limit);
@@ -134,7 +128,6 @@ public class SolutionDAO {
 		return uArray;
 	}
 
-	// delete Solution
 	static public void delete(Solution s) throws SQLException {
 		try {
 			Connection conn = DbUtil.getConnection();
@@ -154,7 +147,6 @@ public class SolutionDAO {
 
 	}
 
-	// All solutions of a user
 	static public Solution[] loadAllByUserId(int id) throws SQLException {
 		ArrayList<Solution> solutionsList = new ArrayList<>();
 		try {
@@ -182,7 +174,6 @@ public class SolutionDAO {
 		return sArray;
 	}
 
-	// All solutions of an exercise
 	static public Solution[] loadAllByExerciseId(int id) throws SQLException {
 		ArrayList<Solution> solutionsList = new ArrayList<>();
 		try {
@@ -209,7 +200,5 @@ public class SolutionDAO {
 		sArray = solutionsList.toArray(sArray);
 		return sArray;
 	}
-
-	
 
 }

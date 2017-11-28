@@ -3,7 +3,6 @@ package com.codingSQL.model;
 
 public class Solution {
 
-	// ATRYBUTY
 	private int id;
 	private String created;
 	private String updated;
@@ -11,7 +10,6 @@ public class Solution {
 	private int exercise_id;
 	private int users_id;
 
-	// KONSTRUKTOR Z PARAMETRAMI
 	public Solution(String created, String updated, String description, int exercise_id, int users_id) {
 		this.id = 0;
 		this.setCreated(created);
@@ -21,11 +19,9 @@ public class Solution {
 		this.setUsers_id(users_id);
 	}
 
-	// KONSTRUKTOR DOMYSLNY
 	public Solution() {
 	}
 
-	// GET i SET
 	public int getId() {
 		return id;
 	}
@@ -74,7 +70,6 @@ public class Solution {
 		this.id = id;
 	}
 
-	// TOSTRNG
 	public String toString() {
 		return (id + " | " + created + " " + updated + " " + description + " " + exercise_id + " " + users_id);
 	}

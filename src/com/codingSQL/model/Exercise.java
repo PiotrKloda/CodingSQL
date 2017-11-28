@@ -2,14 +2,11 @@ package com.codingSQL.model;
 
 public class Exercise {
 
-	// ATRYBUTY
 	public int id;
 	public String title;
 	public String description;
 
-	// CONSTRUCOTORS
 	public Exercise(String title, String description) {
-		// this.id=0;
 		setTitle(title);
 		setDescription(description);
 	}
@@ -24,7 +21,6 @@ public class Exercise {
 		return (id + " " + title + " " + description);
 	}
 
-	// SET & GET
 	public int getId() {
 		return id;
 	}
@@ -44,9 +40,9 @@ public class Exercise {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	
 }

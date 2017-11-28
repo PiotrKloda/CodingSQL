@@ -21,7 +21,6 @@ public class Servlet_groupDetails extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		
 		try {
 			int ug_id = Integer.parseInt(request.getParameter("ug_id"));
 			User_group ug = User_groupDAO.loadUser_groupById(ug_id);
@@ -31,12 +30,11 @@ public class Servlet_groupDetails extends HttpServlet {
 			request.setAttribute("u", u);
 			System.out.println("Servlet_groupDetails works correctly");
 			getServletContext().getRequestDispatcher("/view/groupDetails_view.jsp").forward(request, response);
-			
+
 		} catch (SQLException e) {
 			System.out.println("Failed to load User_group details");
 			e.printStackTrace();
 		}
-		
 
 	}
 

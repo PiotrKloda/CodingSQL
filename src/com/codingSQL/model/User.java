@@ -4,14 +4,12 @@ import org.mindrot.jbcrypt.BCrypt;
 
 public class User {
 
-	// ATRYBUTY
 	private int id;
 	private String username;
 	private String password;
 	private String email;
 	private int person_group_id;
 
-	// KONSTRUKTOR Z PARAMETRAMI
 	public User(String username, String email, String password, int person_group_id) {
 		this.id = 0;
 		this.username = username;
@@ -20,16 +18,13 @@ public class User {
 		this.setPerson_group_id(person_group_id);
 	}
 
-	// KONSTRUKTOR DOMYSLNY
 	public User() {
 	}
 
-	// ZMIANA OPISU FUNKCJI
 	public String toString() {
 		return (id + " | " + username + " " + password + " " + email + " " + person_group_id);
 	}
 
-	// GETTERY I SETTERY
 	public int getId() {
 		return id;
 	}
@@ -68,6 +63,4 @@ public class User {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	
 }

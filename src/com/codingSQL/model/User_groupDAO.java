@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 public class User_groupDAO {
 
-	// savetoDB
 	static public void saveToDB(User_group ug) throws SQLException {
 		try {
 			Connection conn = DbUtil.getConnection();
@@ -37,7 +36,6 @@ public class User_groupDAO {
 		}
 	}
 
-	// loadUser_groupsById
 	static public User_group loadUser_groupById(int id) throws SQLException {
 		try {
 			Connection conn = DbUtil.getConnection();
@@ -59,7 +57,6 @@ public class User_groupDAO {
 		return null;
 	}
 
-	// loadAllUser_groups
 	static public User_group[] loadAllUser_groups() throws SQLException {
 		ArrayList<User_group> user_groups = new ArrayList<User_group>();
 		try {
@@ -83,7 +80,6 @@ public class User_groupDAO {
 		return u_gArray;
 	}
 
-	// delete user_group 
 	static public void delete(User_group ug) throws SQLException {
 		if (ug.getId() != 0) {
 			try {
@@ -100,21 +96,20 @@ public class User_groupDAO {
 			}
 		}
 	}
-	
-	// delete user_group by Id
-		static public void delete(int ug_id) throws SQLException {
-			if (ug_id != 0) {
-				try {
-					Connection conn = DbUtil.getConnection();
-					String sql = "DELETE FROM user_group WHERE id= ?";
-					PreparedStatement preparedStatement;
-					preparedStatement = conn.prepareStatement(sql);
-					preparedStatement.setInt(1, ug_id);
-					preparedStatement.executeUpdate();
-				} catch (SQLException e) {
-					System.out.println("Deleting user_group failed");
-					e.printStackTrace();
-				}
+
+	static public void delete(int ug_id) throws SQLException {
+		if (ug_id != 0) {
+			try {
+				Connection conn = DbUtil.getConnection();
+				String sql = "DELETE FROM user_group WHERE id= ?";
+				PreparedStatement preparedStatement;
+				preparedStatement = conn.prepareStatement(sql);
+				preparedStatement.setInt(1, ug_id);
+				preparedStatement.executeUpdate();
+			} catch (SQLException e) {
+				System.out.println("Deleting user_group failed");
+				e.printStackTrace();
 			}
 		}
+	}
 }

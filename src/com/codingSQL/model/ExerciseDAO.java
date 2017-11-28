@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 public class ExerciseDAO {
 
-	// savetoDB
 	public static void saveToDB(Exercise ex) throws SQLException {
 
 		try {
@@ -40,8 +39,7 @@ public class ExerciseDAO {
 		}
 	}
 
-	// loadExerciseById
-	static  public Exercise loadExerciseById(int id) throws SQLException {
+	static public Exercise loadExerciseById(int id) throws SQLException {
 		try {
 			Connection conn = DbUtil.getConnection();
 			String sql = "SELECT * FROM exercise where id=?";
@@ -63,7 +61,6 @@ public class ExerciseDAO {
 		return null;
 	}
 
-	// loadAllExercises
 	static public Exercise[] loadAllExercises() throws SQLException {
 
 		ArrayList<Exercise> exercises = new ArrayList<Exercise>();
@@ -89,7 +86,6 @@ public class ExerciseDAO {
 		return uArray;
 	}
 
-	// delete Exercise
 	static public void delete(Exercise ex) throws SQLException {
 		try {
 			if (ex.getId() != 0) {
@@ -106,18 +102,17 @@ public class ExerciseDAO {
 			e.printStackTrace();
 		}
 	}
-	
-	// to see title of Exercise of a solution - homePage
-		static public Exercise[] loadExercisesOfLatestSolution(Solution[] sList) {
-			Exercise[] eList = new Exercise[sList.length];
-			try {
-				for (int i = 0; i < sList.length; i++) {
-					eList[i] = ExerciseDAO.loadExerciseById(sList[i].getExercise_id());
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
+
+	static public Exercise[] loadExercisesOfLatestSolution(Solution[] sList) {
+		Exercise[] eList = new Exercise[sList.length];
+		try {
+			for (int i = 0; i < sList.length; i++) {
+				eList[i] = ExerciseDAO.loadExerciseById(sList[i].getExercise_id());
 			}
-			return eList;
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+		return eList;
+	}
 
 }

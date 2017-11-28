@@ -15,25 +15,26 @@ import com.codingSQL.model.User_groupDAO;
 @WebServlet("/admin_ug")
 public class Servlet_admin_ug_Manage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		try {
 			User_group[] ugList = User_groupDAO.loadAllUser_groups();
 			request.setAttribute("ugList", ugList);
 			getServletContext().getRequestDispatcher("/view/admin_ug_Manage_view.jsp").forward(request, response);
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		if ( request.getParameter("name")!=null ) {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		if (request.getParameter("name") != null) {
 			try {
-				String name=request.getParameter("name");
+				String name = request.getParameter("name");
 				User_group ug = new User_group(name);
 				User_groupDAO.saveToDB(ug);
 				response.sendRedirect("http://localhost:8080/codingSQL/admin_ug");
@@ -41,11 +42,11 @@ public class Servlet_admin_ug_Manage extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		
-		if (request.getParameter("num")!=null  ) {
-			if ( (Integer.parseInt(request.getParameter("num"))) > 0  ){
+
+		if (request.getParameter("num") != null) {
+			if ((Integer.parseInt(request.getParameter("num"))) > 0) {
 				try {
-					int ugId=Integer.parseInt( request.getParameter("num"));
+					int ugId = Integer.parseInt(request.getParameter("num"));
 					User_groupDAO.delete(ugId);
 					response.sendRedirect("http://localhost:8080/codingSQL/admin_ug");
 				} catch (SQLException e) {
@@ -55,19 +56,19 @@ public class Servlet_admin_ug_Manage extends HttpServlet {
 				response.sendRedirect("http://localhost:8080/codingSQL/admin_ug");
 			}
 		}
-		
-		if ( request.getParameter("new_name")!=null && request.getParameter("new_id")!=null) {
+
+		if (request.getParameter("new_name") != null && request.getParameter("new_id") != null) {
 			try {
-				int ugId=Integer.parseInt( request.getParameter("new_id"));
+				int ugId = Integer.parseInt(request.getParameter("new_id"));
 				User_group ug = User_groupDAO.loadUser_groupById(ugId);
 				ug.setName(request.getParameter("new_name"));
-				
+
 				User_groupDAO.saveToDB(ug);
 				response.sendRedirect("http://localhost:8080/codingSQL/admin_ug");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
-		
+
 	}
 }
