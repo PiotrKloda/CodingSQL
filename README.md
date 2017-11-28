@@ -15,7 +15,7 @@ Exercise - admin adds exercises
 Solution - stores information about author and the exercise
 
 Dataase schema:
-![alt text](https://github.com/PiotrKloda/CodingSQL_Servlets/blob/master/Screenshots/CodingSQL-database "db schema")
+![alt text](https://github.com/PiotrKloda/CodingSQL_Servlets/blob/master/Screenshots/dbSchema.png "db schema")
 
 ## To Expand:
 1. Add internal messages
