@@ -2,6 +2,7 @@
 
 ## Descrption
 Application for partial management of programming school. Users are able to store their Solutions to Exercises
+
 Preview:
 
 ![alt text](https://github.com/PiotrKloda/CodingSQL_Servlets/blob/master/Screenshots/preview.png "db schema")
