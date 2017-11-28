@@ -28,7 +28,7 @@
 	<%@ include file="../WEB-INF/header.jsp" %>
 	<a href="http://localhost:8080/codingSQL/hp">Go back </a> <br>
 
-	<h3>Users Groups list</h3>
+	<h3>User Groups list</h3>
 	<table>
 		<thead>
 			<tr>
